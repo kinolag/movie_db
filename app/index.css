@@ -1,0 +1,155 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* elements */
+
+body {
+  font-family: system-ui, Geneva, Tahoma, sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% -24px);
+  padding: 12px 12px;
+  border-bottom: 1px dotted #bbb;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 95%;
+  max-width: 1200px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}
+
+main section {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main section p {
+  font-size: 15px;
+  margin: 6px 4px;
+}
+
+main section p span {
+  color: #23395d;
+  font-weight: bold;
+}
+
+fieldset {
+  display: flex;
+  border-width: 0px;
+  font-size: 14px;
+}
+
+input {
+  margin: 6px 12px;
+}
+
+button {
+  background-color: transparent;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  border-radius: 32px;
+  text-align: center;
+  cursor: pointer;
+  padding: 8px 12px;
+  margin: 5px;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 2px 0px #ff6b48 inset;
+  opacity: 0.9;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 15px;
+  border-top: 1px dotted #bbb;
+  /* margin-top: 15px; */
+}
+
+footer div {
+  font-size: 14px;
+  color: #4bc1c1;
+}
+
+footer img {
+  margin-top: 10px;
+  width: 140px;
+  height: auto;
+}
+
+a {
+  text-decoration: underline;
+  color: #192841;
+}
+
+a:hover {
+  text-decoration: none;
+  color: orangered;
+}
+
+/* wrappers */
+
+.responsiveGrid {
+  display: grid;
+  width: 90%;
+  background-color: #eee;
+  border-radius: 8px;
+  padding: 16px;
+  grid-gap: 16px;  
+  /* make grid responsive */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  justify-items: center;
+}
+
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 16px;
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  max-width: 280px;
+}
+
+.searchWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10px;
+  margin-top: 12px;
+  color: #333;
+  border: 1px dotted #bbb;
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+@media only screen and (max-width: 600px) {
+  .cardWrapper {
+    width: 100%;
+  }
+}
