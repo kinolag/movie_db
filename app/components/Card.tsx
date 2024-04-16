@@ -43,8 +43,7 @@ const Card = ({
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div
       id={String(id)}
-      className="card-wrapper txt-c"
-      style={{...(isSelected ? { border: "1px solid #ff6b48" } : {})}}
+      className={`card-wrapper txt-c ${isSelected ? "highlighted" : ""}`}
       onClick={() => handleSelect(id)}
     >
       <div style={styles.cardImage} />

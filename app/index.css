@@ -206,8 +206,16 @@ a:hover {
   margin: 8px 0px;
 }
 
+.highlighted {
+  border-color: #ff6b48;
+}
+
 @media only screen and (max-width: 600px) {
   .card-wrapper {
     width: 100%;
+  }
+
+  .highlighted {
+    border-color: #bbb;
   }
 }
