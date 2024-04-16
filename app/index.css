@@ -172,6 +172,10 @@ a:hover {
   background-image: linear-gradient(to bottom, #eee, #fff);
 }
 
+.card-wrapper:focus {
+  border: 1px solid #ff6b48;
+}
+
 .search-wrapper {
   display: flex;
   flex-direction: row;

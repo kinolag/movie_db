@@ -12,6 +12,8 @@ type CardProps = {
   vote: number;
   overview: string;
   mediaType: MediaType;
+  isSelected: boolean;
+  handleSelect: (arg0: number) => void;
 };
 
 const Card = ({
@@ -21,6 +23,8 @@ const Card = ({
   vote,
   overview,
   mediaType,
+  isSelected,
+  handleSelect,
 }: CardProps) => {
   const itemLabel = LABELS[mediaType];
   const imageUrl = imagePath ? `${IMG_LOCATION}${imagePath}` : TMDBsquare;
@@ -36,7 +40,13 @@ const Card = ({
   };
 
   return (
-    <div className="card-wrapper txt-c">
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+    <div
+      id={String(id)}
+      className="card-wrapper txt-c"
+      style={{...(isSelected ? { border: "1px solid #ff6b48" } : {})}}
+      onClick={() => handleSelect(id)}
+    >
       <div style={styles.cardImage} />
       <h4 className="y-spaced">
         <Link to={`/${mediaType}/${id}`} title="View Details">
