@@ -23,7 +23,7 @@ export default function Details({
   return (
     <>
       {itemDetails.id ? (
-        <div className="card-wrapper">
+        <div className="card-wrapper" style={{ minWidth: "33vw" }}>
           <h3>{titleOrName}</h3>
           <img
             src={
@@ -34,7 +34,7 @@ export default function Details({
             alt={titleOrName}
             title={titleOrName}
           />
-          <p>
+          <p className="txt-c">
             <em>{itemDetails.tagline}</em>
           </p>
           <p>
