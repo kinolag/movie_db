@@ -12,9 +12,11 @@ body {
 header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: calc(100% -24px);
-  padding: 12px 12px;
+  padding: 14px 12px;
   border-bottom: 1px dotted #bbb;
+  background-image: linear-gradient(to top, #eee, #fff);
 }
 
 nav {
@@ -27,7 +29,13 @@ nav {
 
 main {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  top: 51px;
+  bottom: 84px;
+  overflow: auto;
 }
 
 main section {
@@ -36,6 +44,10 @@ main section {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+main section h3 {
+  margin: 12px 6px;
 }
 
 main section p {
@@ -56,6 +68,7 @@ fieldset {
 
 input {
   margin: 6px 12px;
+  padding: 6px;
 }
 
 button {
@@ -71,8 +84,8 @@ button {
 
 button:focus {
   outline: none;
-  box-shadow: 0 0 2px 0px #ff6b48 inset;
-  opacity: 0.9;
+  box-shadow: 0 0 2px 1px #ff6b48 inset;
+  opacity: 0.75;
 }
 
 footer {
@@ -82,9 +95,8 @@ footer {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 15px;
+  padding: 10px;
   border-top: 1px dotted #bbb;
-  /* margin-top: 15px; */
 }
 
 footer div {
@@ -94,6 +106,7 @@ footer div {
 
 footer img {
   margin-top: 10px;
+  margin-bottom: 6px;
   width: 140px;
   height: auto;
 }
@@ -110,46 +123,86 @@ a:hover {
 
 /* wrappers */
 
-.responsiveGrid {
-  display: grid;
-  width: 90%;
-  background-color: #eee;
-  border-radius: 8px;
-  padding: 16px;
-  grid-gap: 16px;  
-  /* make grid responsive */
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  justify-items: center;
+.app-wrapper {
+  position: relative;
+  align-self: center;
+  width: 100vw;
+  height: 100vh;
 }
 
-.cardWrapper {
+.tabs-wrapper {
+  /* width: 100%; */
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.tab {
+  width: 120px;
+  padding: 10px;
+  text-align: center;
+}
+
+.responsive-grid {
+  display: grid;
+  width: 90%;
+  border: 1px dotted #bbb;
+  border-radius: 8px;
+  padding: 16px;
+  grid-gap: 16px;
+  justify-items: center;
+  /* make grid responsive */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  /* background-color: #eee; */
+}
+
+.card-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   padding: 16px;
   color: #333;
-  background-color: #fff;
   border: 1px solid #bbb;
   border-radius: 6px;
   max-width: 280px;
+  background-color: #fff;
+  background-image: linear-gradient(to bottom, #eee, #fff);
 }
 
-.searchWrapper {
+.search-wrapper {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   padding: 10px;
-  margin-top: 12px;
+  margin-top: 8px;
   color: #333;
   border: 1px dotted #bbb;
   border-radius: 6px;
   background-color: #fff;
+  max-width: 90%;
+}
+
+.radio-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* modifiers */
+.txt-c {
+  text-align: center;
+}
+
+.y-spaced {
+  margin: 8px 0px;
 }
 
 @media only screen and (max-width: 600px) {
-  .cardWrapper {
+  .card-wrapper {
     width: 100%;
   }
 }
