@@ -1,5 +1,15 @@
 import AppLayout from "../layouts/_app";
-import type { MetaFunction } from "@remix-run/node";
+import { type MetaFunction, json } from "@remix-run/node";
+import {
+  type MediaType,
+  type Movie,
+  type TvShow,
+  getResults,
+} from "~/models/result.server";
+import { useLoaderData, useNavigation } from "@remix-run/react";
+import { useState } from "react";
+import Tabs, { type AvailableTab } from "../components/Tabs";
+import ResultsGrid from "../components/ResultsGrid";
 
 export const meta: MetaFunction = () => {
   return [
@@ -8,14 +18,35 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+export const loader = async ({ request }: { request: Request }) => {
+  const url = new URL(request.url);
+  const search = new URLSearchParams(url.search);
+  const mediaType = search.get("media-type") ?? "movie";
+
+  const results = await getResults("trending", mediaType as MediaType);
+  return json({ results });
+};
+
 export default function Index() {
+  const { results }: { results: Array<Movie | TvShow> } = useLoaderData<typeof loader>();
+  const navigation = useNavigation();
+
+  const [selectedTab, setSelectedTab] = useState<AvailableTab>("Movies");
   return (
     <AppLayout>
-      <p style={{ padding: "24px 12px", textAlign: "center", lineHeight: 1.5 }}>
-        Discover Movies
-        <br />
-        and TV Shows
-      </p>
+      <section>
+        {navigation.state === "loading" ? (
+          <h3>Loading results...</h3>
+        ) : results?.length > 0 ? (
+          <>
+            <h3>Trending This Week</h3>
+            <Tabs selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+            <ResultsGrid results={results} />
+          </>
+        ) : (
+          <h3>No results to display</h3>
+        )}
+      </section>
     </AppLayout>
   );
 }
