@@ -100,7 +100,6 @@ export async function getResults(
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log((data));
         if (Array.isArray(data.results)) {
           /* results from search have no media_type */
           output.results = data.results.map((r: Result) => {
