@@ -6,7 +6,7 @@ export default function Header() {
       <nav>
         <h3>Movie DB App</h3>
         <Link to="/" title="Homepage">
-          Trending
+          Home
         </Link>
         <Link to="/search" title="Search">
           Search
