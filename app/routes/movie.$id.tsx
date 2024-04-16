@@ -8,7 +8,7 @@ import Details from "../components/Details";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Movie DB" },
+    { title: "Movie DB - Details" },
     { name: "description", content: "Movie Details" },
   ];
 };

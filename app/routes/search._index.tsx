@@ -16,7 +16,7 @@ import { LABELS } from "../components/Card";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Movie DB Search" },
+    { title: "Movie DB - Search" },
     { name: "description", content: "Search shows in The Movie DB" },
   ];
 };
