@@ -2,8 +2,7 @@ import AppLayout from "../layouts/_app";
 import { type MetaFunction, json } from "@remix-run/node";
 import {
   type MediaType,
-  type Movie,
-  type TvShow,
+  type Output,
   getResults,
 } from "~/models/result.server";
 import {
@@ -28,19 +27,18 @@ export const loader = async ({ request }: { request: Request }) => {
   const query = search.get("query");
   const mediaType = search.get("media-type") ?? "movie";
 
-  const results = await getResults(
+  const output = await getResults(
     "search",
     mediaType as MediaType,
     query as string
   );
-  return json({ results });
+  return json(output);
 };
 
 export default function Search() {
+  const { results, page, totalPages }: Output = useLoaderData<typeof loader>();
   const navigation = useNavigation();
   const [searchParams] = useSearchParams();
-  const { results }: { results: Array<Movie | TvShow> } =
-    useLoaderData<typeof loader>();
 
   const query = searchParams.get("query");
   const mediaType = searchParams.get("media-type");
@@ -57,6 +55,7 @@ export default function Search() {
             {query && mediaType && results.length > 0 ? (
               <>
                 <h3>{`Results for "${query}" (${label})`}</h3>
+                <h5 className="y-spaced">{`Page ${page} of ${totalPages}`}</h5>
                 <ResultsGrid results={results} />
               </>
             ) : query && !results.length ? (

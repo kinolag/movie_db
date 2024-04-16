@@ -2,9 +2,8 @@ import AppLayout from "../layouts/_app";
 import { type MetaFunction, json } from "@remix-run/node";
 import {
   type MediaType,
-  type Movie,
-  type TvShow,
   getResults,
+  type Output,
 } from "~/models/result.server";
 import { useLoaderData, useNavigation } from "@remix-run/react";
 import { useState } from "react";
@@ -23,12 +22,12 @@ export const loader = async ({ request }: { request: Request }) => {
   const search = new URLSearchParams(url.search);
   const mediaType = search.get("media-type") ?? "movie";
 
-  const results = await getResults("trending", mediaType as MediaType);
-  return json({ results });
+  const output = await getResults("trending", mediaType as MediaType);
+  return json(output);
 };
 
 export default function Index() {
-  const { results }: { results: Array<Movie | TvShow> } = useLoaderData<typeof loader>();
+  const { results, page, totalPages }: Output = useLoaderData<typeof loader>();
   const navigation = useNavigation();
 
   const [selectedTab, setSelectedTab] = useState<AvailableTab>("Movies");
@@ -41,6 +40,7 @@ export default function Index() {
           <>
             <h3>Trending This Week</h3>
             <Tabs selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+            <h5 className="y-spaced">{`Page ${page} of ${totalPages}`}</h5>
             <ResultsGrid results={results} />
           </>
         ) : (

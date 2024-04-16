@@ -1,4 +1,3 @@
-
 /**
  * from "trending" or "search" API endpoints
  * API URLs
@@ -61,12 +60,17 @@ export type Result = {
 const apiKey = process.env.TMDB_API_KEY;
 const baseUrl = process.env.TMDB_API_BASEURL;
 
+export type Output = {
+  results: Array<Movie | TvShow>;
+  page: number;
+  totalPages: number;
+};
 export async function getResults(
   source: PageSource,
   mediaType: MediaType,
   query: string = "",
   page: number = 1
-): Promise<void | Array<Movie | TvShow>> {
+): Promise<void | Output> {
   const PATHS = {
     trending: `${source}/${mediaType}/week`,
     search: `${source}/${mediaType}`,
@@ -82,7 +86,11 @@ export async function getResults(
     `&page=${page}`;
   console.log("Fetch URL: ", url);
 
-  let results: Array<Movie | TvShow> = [];
+  const output: Output = {
+    results: [],
+    page: 1,
+    totalPages: 0,
+  };
   try {
     await fetch(url, {
       method: "GET",
@@ -92,15 +100,17 @@ export async function getResults(
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(Object.keys(data));
+        console.log((data));
         if (Array.isArray(data.results)) {
           /* results from search have no media_type */
-          results = data.results.map((r: Result) => {
+          output.results = data.results.map((r: Result) => {
             return { ...r, media_type: mediaType };
           });
+          output.page = data.page;
+          output.totalPages = data.total_pages;
         }
       });
-    return results;
+    return output;
   } catch (e) {
     console.log("An error occurred while fetching the results: ", e);
   }
