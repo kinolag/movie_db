@@ -1,3 +1,33 @@
+# Movie DB app
+
+This application lets you see the trending shows on The Movie DB (TMDB).
+
+A search feature is also implemented.  
+
+In both cases, results are filtered by type: Movie or TV Show.
+
+You can also see more details for each show.
+
+Four routes are implemented: home, search, movie and tv show.
+
+## Keyboard Navigation
+
+On devices that have a keyboard, the results grid can be navigated with the four 'Arrow' keys. The 'Enter' key navigates to the selected item page.
+
+## Technology
+
+The app was developed with the Remix framework and TypeScript.
+
+## Deployment
+
+The app is live on Vercel at the address on the right.
+
+### Notes
+
+Some simple tests are included but coverage needs to expanded yet.
+
+-----------------------------------------------
+
 # Welcome to Remix + Vite!
 
 📖 See the [Remix docs](https://remix.run/docs) and the [Remix Vite docs](https://remix.run/docs/en/main/future/vite) for details on supported features.
