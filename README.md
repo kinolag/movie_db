@@ -28,7 +28,7 @@ The app is live on Vercel at the address on the right.
 
 ### Notes / Improvements
 
-Some simple tests are included but coverage needs to be expanded yet.
+Some simple tests are included (using Vitest and React Testing Library).
 
 Initial support for pagination is also there.
 
