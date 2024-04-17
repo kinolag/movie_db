@@ -1,10 +1,10 @@
 import AppLayout from "../layouts/_app";
-import { type MetaFunction, json } from "@remix-run/node";
+import { type MetaFunction, json, LoaderFunctionArgs } from "@remix-run/node";
 import {
   type MediaType,
   getResults,
   type Output,
-} from "~/models/result.server";
+} from "../models/result.server";
 import { useLoaderData, useNavigation } from "@remix-run/react";
 import { useState } from "react";
 import Tabs, { type AvailableTab } from "../components/Tabs";
@@ -17,7 +17,7 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export const loader = async ({ request }: { request: Request }) => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
   const url = new URL(request.url);
   const search = new URLSearchParams(url.search);
   const mediaType = search.get("media-type") ?? "movie";

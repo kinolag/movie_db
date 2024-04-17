@@ -1,7 +1,7 @@
 /* API: https://api.themoviedb.org/3/tv/{series_id} */
 import AppLayout from "../layouts/_app";
 import { type MetaFunction, json, LoaderFunctionArgs } from "@remix-run/node";
-import { getItemDetails, type TvShowDetails } from "~/models/result.server";
+import { getItemDetails, type TvShowDetails } from "../models/result.server";
 import { useLoaderData, useNavigation } from "@remix-run/react";
 import invariant from "tiny-invariant";
 import Details from "../components/Details";

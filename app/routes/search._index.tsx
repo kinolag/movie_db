@@ -4,7 +4,7 @@ import {
   type MediaType,
   type Output,
   getResults,
-} from "~/models/result.server";
+} from "../models/result.server";
 import {
   useLoaderData,
   useNavigation,

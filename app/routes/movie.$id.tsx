@@ -1,7 +1,7 @@
 /* API: https://api.themoviedb.org/3/movie/{movie_id} */
 import AppLayout from "../layouts/_app";
 import { type MetaFunction, json, LoaderFunctionArgs } from "@remix-run/node"; 
-import { getItemDetails, type MovieDetails } from "~/models/result.server";
+import { getItemDetails, type MovieDetails } from "../models/result.server";
 import { useLoaderData, useNavigation } from "@remix-run/react";
 import invariant from "tiny-invariant";
 import Details from "../components/Details";
