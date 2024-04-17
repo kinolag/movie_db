@@ -5,7 +5,7 @@ import TMDBsquare from "../assets/images/tmdb_blue_square_2_360.png";
 export const IMG_LOCATION = "https://www.themoviedb.org/t/p/w220_and_h330_face";
 export const LABELS = { movie: "Movie", tv: "TV Show" };
 
-type CardProps = {
+export type CardProps = {
   id: number;
   titleOrName: string;
   imagePath: string;
@@ -16,16 +16,9 @@ type CardProps = {
   handleSelect: (arg0: number) => void;
 };
 
-const Card = ({
-  id,
-  titleOrName,
-  imagePath,
-  vote,
-  overview,
-  mediaType,
-  isSelected,
-  handleSelect,
-}: CardProps) => {
+const Card = ({ cardProps }: { cardProps: CardProps }) => {
+  const {id, titleOrName, imagePath, vote, overview, mediaType, isSelected, handleSelect}: CardProps = cardProps;
+  
   const itemLabel = LABELS[mediaType];
   const imageUrl = imagePath ? `${IMG_LOCATION}${imagePath}` : TMDBsquare;
   const styles = {
