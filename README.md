@@ -14,6 +14,10 @@ Four routes are implemented: home, search, movie and tv show.
 
 On devices that have a keyboard, the results grid can be navigated with the four 'Arrow' keys. The 'Enter' key navigates to the selected item page.
 
+## Responsive Design
+
+The app adapts to mobile / smaller screen devices as the grid layout is responsive.
+
 ## Technology
 
 The app was developed with the Remix framework and TypeScript.
