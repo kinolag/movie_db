@@ -16,14 +16,13 @@ type TabsProps = {
 export default function Tabs({ selectedTab, setSelectedTab }: TabsProps) {
   return (
     <Form>
-      {TABS.map((t, i) => (
+      {TABS.map((t) => (
         <button
           key={t.label}
           className="tab"
           style={{
             cursor: t.label === selectedTab ? "default" : "pointer",
             fontWeight: t.label === selectedTab ? "bold" : "normal",
-            borderRight: i < TABS.length - 1 ? "1px solid #ccc" : 0,
           }}
           name={"media-type"}
           value={t.mediaType}
