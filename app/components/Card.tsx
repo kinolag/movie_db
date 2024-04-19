@@ -45,12 +45,12 @@ const Card = ({ cardProps }: { cardProps: CardProps }) => {
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div
       id={String(id)}
-      className={`card-wrapper txt-c ${isSelected ? "highlighted" : ""}`}
+      className={`card-wrapper txt-c ${isSelected? "highlighted" : ""}`}
       onClick={() => handleSelect(id)}
     >
       <div style={styles.cardImage} />
       <h4 className="y-spaced">
-        <Link to={`/${mediaType}/${id}`} title="View Details" prefetch="intent">
+        <Link to={`/${mediaType}/${id}`} title="View Details">
           {titleOrName}
         </Link>
       </h4>

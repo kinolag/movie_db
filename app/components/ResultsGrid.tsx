@@ -43,9 +43,7 @@ export default function ResultsGrid({
       if (results.length === 0) {
         return;
       }
-      if (!selected) {
-        setSelected(results[0]);
-      } else if (e.key === NAVIGATION_KEYS.ARROW_RIGHT) {
+      if (selected && e.key === NAVIGATION_KEYS.ARROW_RIGHT) {
         const nextIndex = results.indexOf(selected) + 1;
         if (!results[nextIndex]) return;
 
@@ -56,7 +54,7 @@ export default function ResultsGrid({
 
         setSelected(results[nextIndex]);
         nextSibling.scrollIntoView();
-      } else if (e.key === NAVIGATION_KEYS.ARROW_LEFT) {
+      } else if (selected && e.key === NAVIGATION_KEYS.ARROW_LEFT) {
         const prevIndex = results.indexOf(selected) - 1;
         if (!results[prevIndex]) return;
 
@@ -66,7 +64,7 @@ export default function ResultsGrid({
         if (!prevSibling) return;
         prevSibling.scrollIntoView();
         setSelected(results[prevIndex]);
-      } else if (e.key === NAVIGATION_KEYS.ARROW_UP) {
+      } else if (selected && e.key === NAVIGATION_KEYS.ARROW_UP) {
         const rect = getRect(selected.id);
 
         // loop back in the results and select the first element
@@ -80,7 +78,7 @@ export default function ResultsGrid({
             break;
           }
         }
-      } else if (e.key === NAVIGATION_KEYS.ARROW_DOWN) {
+      } else if (selected && e.key === NAVIGATION_KEYS.ARROW_DOWN) {
         const rect = getRect(selected.id);
 
         // loop forward in the results and select the first element
@@ -94,10 +92,13 @@ export default function ResultsGrid({
           }
         }
       } else if (e.key === NAVIGATION_KEYS.ENTER) {
-        navigate(`/${selected.media_type}/${selected.id}`);
+        navigate(`/${selected?.media_type}/${selected?.id}`);
       }
     };
 
+    if (!selected) {
+      setSelected(results[0]);
+    }
     document.addEventListener("keyup", handleKeyPress);
     return () => document.removeEventListener("keyup", handleKeyPress);
   }, [navigate, results, selected]);
@@ -114,7 +115,7 @@ export default function ResultsGrid({
             overview: r.overview,
             mediaType: r.media_type as MediaType,
             vote: r.vote_average,
-            isSelected: r === selected,
+            isSelected: r.id === selected?.id,
             handleSelect: handleSelect,
           };
           return <Card key={r.id} cardProps={cardProps} />;
