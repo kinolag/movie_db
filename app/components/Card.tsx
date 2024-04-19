@@ -17,8 +17,17 @@ export type CardProps = {
 };
 
 const Card = ({ cardProps }: { cardProps: CardProps }) => {
-  const {id, titleOrName, imagePath, vote, overview, mediaType, isSelected, handleSelect}: CardProps = cardProps;
-  
+  const {
+    id,
+    titleOrName,
+    imagePath,
+    vote,
+    overview,
+    mediaType,
+    isSelected,
+    handleSelect,
+  }: CardProps = cardProps;
+
   const itemLabel = LABELS[mediaType];
   const imageUrl = imagePath ? `${IMG_LOCATION}${imagePath}` : TMDBsquare;
   const styles = {
@@ -41,7 +50,7 @@ const Card = ({ cardProps }: { cardProps: CardProps }) => {
     >
       <div style={styles.cardImage} />
       <h4 className="y-spaced">
-        <Link to={`/${mediaType}/${id}`} title="View Details">
+        <Link to={`/${mediaType}/${id}`} title="View Details" prefetch="intent">
           {titleOrName}
         </Link>
       </h4>

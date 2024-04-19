@@ -5,7 +5,7 @@ export default function Header() {
     <header>
       <nav>
         <h3>Movie DB App</h3>
-        <Link to="/" title="Homepage">
+        <Link to="/" title="Homepage" prefetch="viewport">
           Home
         </Link>
         <Link to="/search" title="Search">
