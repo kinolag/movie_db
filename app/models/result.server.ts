@@ -68,7 +68,7 @@ export type Output = {
 export async function getResults(
   source: PageSource,
   mediaType: MediaType,
-  query: string = "",
+  query?: string,
   page: number = 1
 ): Promise<void | Output> {
   const PATHS = {
@@ -82,7 +82,7 @@ export async function getResults(
     path +
     "?" +
     `api_key=${apiKey}` +
-    `&query=${query}` +
+    (query ? `&query=${query}` : "") +
     `&page=${page}`;
   console.log("Fetch URL: ", url);
 
